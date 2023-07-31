@@ -68,6 +68,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
             return RespBean.error("验证码输入错误，请重新输入");
         }
         // 判断登录
+        // 通过给定的用户名从数据源中加载用户的详细信息
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         if (userDetails == null || !passwordEncoder.matches(password, userDetails.getPassword())) {
             return RespBean.error("用户名或密码不正确");
