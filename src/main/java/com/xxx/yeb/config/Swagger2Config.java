@@ -36,6 +36,10 @@ public class Swagger2Config {
                 .securitySchemes(securitySchemes());
     }
 
+    /**
+     * 设置swagger接口文档的基础展示信息
+     * @return
+     */
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
                 .title("云E办接口文档 - WS")

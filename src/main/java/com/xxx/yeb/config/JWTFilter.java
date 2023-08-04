@@ -34,7 +34,7 @@ public class JWTFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String authHeader = request.getHeader(tokenHeader);
-        // 存在token
+        // 是否存在token，并判断是否以 tokenHead 为开头
         if (authHeader != null  && authHeader.startsWith(tokenHead)){
             String authToken = authHeader.substring(tokenHead.length());
             String username = jwtTokenUtils.getUsernameFromToken(authToken);
