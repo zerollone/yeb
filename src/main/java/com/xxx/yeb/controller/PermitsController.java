@@ -30,13 +30,13 @@ public class PermitsController {
     private MenuRoleService menuRoleService;
 
     @ApiOperation(value = "获取所有角色")
-    @GetMapping("/select")
+    @GetMapping("/")
     public List<Role> select(){
         return roleService.list();
     }
 
     @ApiOperation(value = "添加角色")
-    @PostMapping("/add")
+    @PostMapping("/")
     public RespBean add(@RequestBody Role role){
         if (!role.getName().startsWith("ROLE_")){
             role.setName("ROLE_" + role.getName());
@@ -48,7 +48,7 @@ public class PermitsController {
     }
 
     @ApiOperation(value = "删除角色")
-    @GetMapping("/delete/{rid}")
+    @DeleteMapping("/role/{rid}")
     public RespBean delete(@PathVariable Integer rid){
         if (roleService.removeById(rid)){
             return RespBean.success("删除成功！");
@@ -69,7 +69,7 @@ public class PermitsController {
     }
 
     @ApiOperation(value = "更新角色菜单")
-    @PostMapping("/updateMenuRole")
+    @PutMapping("/updateMenuRole")
     public RespBean updateMenuRole(Integer rid, Integer[] mids){
         return menuRoleService.updateMenuRole(rid, mids);
     }
