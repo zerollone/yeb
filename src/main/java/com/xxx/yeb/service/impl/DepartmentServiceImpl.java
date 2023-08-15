@@ -43,6 +43,7 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
     public RespBean add(Department department) {
         department.setEnabled(true);
         departmentMapper.add(department);
+        // 获取存储过程的结果
         if (department.getResult() == 1 ){
             return RespBean.success("添加成功", department);
         }
